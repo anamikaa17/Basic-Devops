@@ -9,10 +9,15 @@ terraform {
 
 # Configure the AWS Provider
 provider "aws" {
-  region = "us-east-1"
+  region = "eu-central-1"
 }
 
-# Create a VPC
-resource "aws_vpc" "default" {
-  cidr_block = "10.0.0.0/16"
+# Create a Ec2 instance
+resource "aws_instance" "test-server-2" {
+  ami = "ami-076433a70aba7f25d" # RHEL 
+  instance_type = "t2.micro"
+
+  tags = {
+    Name = "test-server-2"
+  }
 }
